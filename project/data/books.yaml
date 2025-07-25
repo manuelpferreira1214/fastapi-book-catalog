@@ -1,0 +1,51 @@
+books:
+  - isbn: "9780141439518"
+    title: "Pride and Prejudice"
+    author: "Jane Austen"
+    published_date: "2002-12-31"
+
+  - isbn: "9780452284234"
+    title: "1984"
+    author: "George Orwell"
+    published_date: "2003-05-06"
+
+  - isbn: "9780743273565"
+    title: "The Great Gatsby"
+    author: "F. Scott Fitzgerald"
+    published_date: "1992-07-01"
+
+  - isbn: "9780142437247"
+    title: "Moby-Dick"
+    author: "Herman Melville"
+    published_date: "1981-11-18"
+  
+  - isbn: "9780199232765"
+    title: "War and Peace"
+    author: "Leo Tolstoy"
+    published_date: "2008-07-15"
+  
+  - isbn: "9780316769488"
+    title: "The Catcher in the Rye"
+    author: "J.D. Salinger"
+    published_date: "2001-09-17"
+  
+  - isbn: "9780547928227"
+    title: "The Hobbit"
+    author: "J.R.R. Tolkien"
+    published_date: "2012-09-18"
+  
+  - isbn: "9780140449136"
+    title: "Crime and Punishment"
+    author: "Fyodor Dostoevsky"
+    published_date: "2004-03-31"
+  
+  - isbn: "9780140449242"
+    title: "The Brothers Karamazov"
+    author: "Fyodor Dostoevsky"
+    published_date: "2005-11-10"
+  
+  - isbn: "9780060883287"
+    title: "One Hundred Years of Solitude"
+    author: "Gabriel García Márquez"
+    published_date: "2006-06-05"
+  

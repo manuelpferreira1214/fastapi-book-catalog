@@ -17,30 +17,33 @@ Simple book catalog service that reads from a static YAML file and exposes a RES
 
 1. Clone the repository
 
-   ```
+   ```bash
    git clone https://github.com/username/fastapi-book-catalog.git
    ```
+
 2. Change to the project directory
 
-   ```
+   ```bash
    cd fastapi-book-catalog
    ```
+
 3. Install dependencies with Poetry
 
-   ```
+   ```bash
    poetry install
    ```
+
 4. Activate virtual environment
 
-   ```
+   ```bash
    poetry shell
    ```
 
-##### Additonal note
+### Additonal note
 
 To activate the virtual environment manually:
 
-```
+```bash
 source $(poetry env info --path)/bin/activate
 ```
 
