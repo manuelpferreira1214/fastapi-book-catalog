@@ -10,6 +10,7 @@ from typing import Optional
 from project.services.book_service import get_all_books
 from project.services.book_service import get_book_by_isbn
 from project.services.book_service import get_books_by_author
+from pydantic import BaseModel
 
 
 logging.basicConfig(
@@ -19,16 +20,18 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
-books = book_loader()
 
-@router.get("/books")
-def get_books(author: Optional[str] = Query(default=None)) -> Dict:
+class BookListResponse(BaseModel):
+    books: Dict[str, Book]
+
+@router.get("/books", response_model=BookListResponse)
+def get_books(author: Optional[str] = Query(default=None)) -> BookListResponse:
     if author:
         list_books = get_books_by_author(author)
         if not list_books:
             logger.warning(f"No book from {author} found.")
             raise HTTPException(status_code=404, detail="Author not found.")
-        return {isbn: book for isbn, book in books.items() if book in list_books}
+        return {isbn: book for isbn, book in get_all_books().items() if book in list_books}
     return get_all_books()
 
 @router.get("/books/isbn/{isbn}")

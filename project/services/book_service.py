@@ -5,7 +5,7 @@ from project.services.book_loader import book_loader
 
 books = book_loader()
 
-def get_all_books() -> Dict:
+def get_all_books() -> Dict[str, Book]:
     return books
 
 def get_book_by_isbn(find_isbn: str) -> Book:

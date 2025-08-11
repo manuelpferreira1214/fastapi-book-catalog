@@ -19,6 +19,7 @@ def test_list_books():
 ])
 def test_get_books_by_author(valid_author: str):
     response = client.get(f"/books?author={valid_author}")
+    assert response.status_code == 200
     data = response.json()
     assert all(book["author"].lower() == valid_author.lower() for book in data.values())
 
@@ -28,6 +29,7 @@ def test_get_books_by_author(valid_author: str):
 ])
 def test_get_author_error_404(author):
     response = client.get(f"/books?author={author}").json()
+    assert response.status_code == 200
     assert response["detail"] == "Author not found."
 
 @pytest.mark.parametrize("invalid_isbn", [
@@ -50,6 +52,7 @@ def test_book_invalid_isbn_format(invalid_isbn):
 ])
 def test_get_book_by_isbn(isbn, expected_title):
     response = client.get(f"/books/isbn/{isbn}").json()
+    assert response.status_code == 200
     assert response["isbn"] == isbn
     assert response["title"] == expected_title
 
@@ -59,4 +62,5 @@ def test_get_book_by_isbn(isbn, expected_title):
 ])
 def test_get_book_error_404(isbn):
     response = client.get(f"/books/isbn/{isbn}").json()
+    assert response.status_code == 200
     assert response["detail"] == "Book not found."
