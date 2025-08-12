@@ -29,8 +29,8 @@ def get_books(author: Optional[str] = Query(default=None)) -> BookListResponse:
         if not list_books:
             logger.warning(f"No book from {author} found.")
             raise HTTPException(status_code=404, detail="Author not found.")
-        return {isbn: book for isbn, book in get_all_books().items() if book in list_books}
-    return get_all_books()
+        return BookListResponse(books=list_books)
+    return BookListResponse(books=get_all_books())
 
 @router.get("/books/isbn/{isbn}")
 def find_book_by_isbn(isbn: str) -> Book:

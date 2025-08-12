@@ -11,9 +11,9 @@ def get_all_books() -> Dict[str, Book]:
 def get_book_by_isbn(find_isbn: str) -> Book:
     return books[find_isbn]
 
-def get_books_by_author(find_author: str) -> List[Book]:
-    author_books = []
-    for book in books.values():
+def get_books_by_author(find_author: str) -> Dict[str, Book]:
+    author_books = {}
+    for isbn, book in books.items():
         if book.author.lower() == find_author.lower():
-            author_books.append(book)
+            author_books[isbn] = book
     return author_books

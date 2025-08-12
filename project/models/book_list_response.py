@@ -1,4 +1,4 @@
-from book import Book
+from project.models.book import Book
 from pydantic import BaseModel
 from typing import Dict
 
