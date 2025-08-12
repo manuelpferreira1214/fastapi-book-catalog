@@ -11,6 +11,7 @@ from project.services.book_service import get_all_books
 from project.services.book_service import get_book_by_isbn
 from project.services.book_service import get_books_by_author
 from pydantic import BaseModel
+from project.models.book_list_response import BookListResponse
 
 
 logging.basicConfig(
@@ -20,9 +21,6 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
-
-class BookListResponse(BaseModel):
-    books: Dict[str, Book]
 
 @router.get("/books", response_model=BookListResponse)
 def get_books(author: Optional[str] = Query(default=None)) -> BookListResponse:
