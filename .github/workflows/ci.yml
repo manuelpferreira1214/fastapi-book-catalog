@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: 
+      - "exercise/*"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Poetry
+        uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: "1.8.3"
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Run pre-commit hooks
+        run: poetry run pre-commit run
+
+      - name: Run mypy
+        run: poetry run mypy project
+
+      - name: Run tests with coverage
+        run: poetry run pytest

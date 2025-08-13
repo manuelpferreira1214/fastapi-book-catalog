@@ -1,8 +1,8 @@
-from pydantic import BaseModel
-from pydantic import Field
-from pydantic import field_validator
-from datetime import date
 import re
+from datetime import date
+
+from pydantic import BaseModel, Field, field_validator
+
 
 class Book(BaseModel):
     isbn: str = Field(...)
