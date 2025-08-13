@@ -1,17 +1,17 @@
-import yaml
 import logging
-from typing import Dict
-from pydantic import ValidationError
-from project.models.book import Book
 from pathlib import Path
+from typing import Dict
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(levelname)s %(name)s: %(message)s"
-)
+import yaml
+from pydantic import ValidationError
+
+from project.models.book import Book
+
+logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger(__name__)
 
-def book_loader() -> Dict[str,Book]:
+
+def book_loader() -> Dict[str, Book]:
     loaded_books = {}
     DATA_PATH = Path(__file__).parent.parent / "data" / "books.yaml"
     try:
@@ -26,7 +26,7 @@ def book_loader() -> Dict[str,Book]:
                     loaded_books[book.get("isbn")] = Book(**book)
                 except ValidationError as error:
                     logger.warning(f"Invalid book data for ISBN {book.get('isbn')}: {error}")
-    except FileNotFoundError: 
+    except FileNotFoundError:
         logger.error("'books.yaml' not found.")
 
     return loaded_books
